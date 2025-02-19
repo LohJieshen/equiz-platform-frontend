@@ -1,0 +1,28 @@
+.quiz_creation__controls {
+    display: flex;
+    flex-direction: row;
+}
+
+.quiz_creation__controls__left {
+    max-width: 50%;
+    display: flex;
+    justify-content: left;
+    text-align: left;
+}
+
+.quiz_creation__controls__right {
+    max-width: 50%;
+    display: block;
+    text-align: left;
+}
+
+.quiz_creation__control {
+    padding: 2%;
+    max-width: 60%;
+}
+
+.quiz_creation__options {
+    display: flex;
+    flex-direction: row;
+    justify-items: space-between;
+}

@@ -1,0 +1,14 @@
+// Structuring of React Projects
+https://dev.to/larswaechter/how-i-structure-my-react-projects-jii
+
+Based on this, HTTP requests function are kept in src/api
+
+//
+https://dhruvpvx.medium.com/the-most-effective-method-for-managing-api-calls-in-your-react-or-react-native-project-fe4293a7905f
+
+
+// This is good example (but uses class, which is supposedly going to be phased out in react)
+https://dev.to/mmcshinsky/a-simple-approach-to-managing-api-calls-1lo6
+
+// This is also good example
+https://profy.dev/article/react-architecture-api-layer-and-fetch-functions

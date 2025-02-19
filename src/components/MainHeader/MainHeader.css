@@ -1,0 +1,24 @@
+h1 {
+    margin: 0;
+}
+
+.main_header {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    padding-top: 30px;
+    height: 12%;
+    min-height: 80px;
+    max-width: 100%;
+    background-color: darkblue;
+    color: white ;
+    text-align: center;
+}
+
+.title {
+    width: 100%;
+}
+
+.spacer {
+    width: 100px;
+}
