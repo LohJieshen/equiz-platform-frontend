@@ -2,7 +2,7 @@
  * Contains methods for returning outputs or posting inputs related directly to quiz(s)
  */
 
-const mainAddress = "http://localhost:8080/api/question"
+const mainAddress = process.env.REACT_APP_SERVICE_BASE_API_URL + "/question";
 
 
 /** 

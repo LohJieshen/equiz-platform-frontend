@@ -1,5 +1,5 @@
 
-const mainAddress = "http://localhost:8080/api/topics"
+const mainAddress = process.env.REACT_APP_SERVICE_BASE_API_URL + "/topics";
 
 const getTopicsByCourseId = async (courseId) => {
     let endpoint = mainAddress + "/" + courseId;
