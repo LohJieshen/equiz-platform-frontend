@@ -2,7 +2,7 @@
  * Contains a library of endpoints pertaining to communicating with the backend for user management, such as verification and retrieval of information.
  */
 
-const mainAddress = "http://localhost:8080/api/user";
+const mainAddress = process.env.REACT_APP_SERVICE_BASE_API_URL + "/user";
 
 /**
  * Authenticate the user's login
