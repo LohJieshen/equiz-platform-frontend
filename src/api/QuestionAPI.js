@@ -12,8 +12,15 @@ export const getQuestionBank = async () => {
 
     let endpoint = mainAddress + "/all/" + localStorage.getItem('courseId');
 
+    const requestOptions = {
+        method: 'GET',
+        // describes to the backend the type of incoming content
+        headers: { 'Content-Type': 'application/json' },
+        mode: 'cors'
+    };
+
     // get data from endpoint (note: fetch(url) defaults to GET)
-    const response = await fetch(endpoint);
+    const response = await fetch(endpoint, requestOptions);
 
     if (!response.ok) {
         throw new Error('Something crashed: ' + response.statusText);
@@ -46,7 +53,14 @@ export const getQuestion = async (id) => {
     
     let endpoint = mainAddress + "/" + id;
 
-    const response = await fetch(endpoint);
+    const requestOptions = {
+        method: 'GET',
+        // describes to the backend the type of incoming content
+        headers: { 'Content-Type': 'application/json' },
+        mode: 'cors'
+    };
+
+    const response = await fetch(endpoint, requestOptions);
 
     if (!response.ok) {
         throw new Error('Something crashed: ' + response.statusText);
@@ -73,7 +87,8 @@ export const addNewQuestion = async (id) => {
         method: 'POST',
         // describes to the backend the type of incoming content
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(id) // turns data into JSON format
+        body: JSON.stringify(id), // turns data into JSON format
+        mode: 'cors'
     };
 
     const response = await fetch(endpoint, requestOptions);
@@ -94,7 +109,8 @@ export const updateQuestion = async (id) => {
         method: 'PUT',
         // describes to the backend the type of incoming content
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(id) // turns data into JSON format
+        body: JSON.stringify(id), // turns data into JSON format
+        mode: 'cors'
     };
 
     const response = await fetch(endpoint, requestOptions);
@@ -115,6 +131,7 @@ export const updateCurrQuestionSelectedChoice = async (userId, quizId, questionN
         method: 'PUT',
         // describes to the backend the type of incoming content
         headers: { 'Content-Type': 'application/json' },
+        mode: 'cors'
     };
 
     const response = await fetch(endpoint, requestOptions);

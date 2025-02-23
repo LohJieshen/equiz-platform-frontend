@@ -24,7 +24,8 @@ export const authenticateUserLogin = async (userId, password) => {
         // describes to the backend the type of incoming content
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(loginInfo), // turns data into JSON format
-        credentials: 'include'
+        credentials: 'include',
+        mode: 'cors'
     };
 
     try {
@@ -54,6 +55,7 @@ export const getUserBasicInfo = async (userId) => {
             method: 'GET',
             // describes to the backend the type of incoming content
             headers: { 'Content-Type': 'application/json' },
+            mode: 'cors'
         };
 
     try {
@@ -96,6 +98,7 @@ export const hasLecturerAccess = async () => {
         method: 'GET',
         // describes to the backend the type of incoming content
         headers: { 'Content-Type': 'application/json' },
+        mode: 'cors'
     };
 
     try {

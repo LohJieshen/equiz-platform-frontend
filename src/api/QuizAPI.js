@@ -12,7 +12,14 @@ const mainAddress = process.env.REACT_APP_SERVICE_BASE_API_URL + "/quiz";
 export const getAssignedQuiz = async () => {
     let endpoint = mainAddress + "/assigned/" + localStorage.getItem('userId');
 
-    const response = await fetch(endpoint);
+    const requestOptions = {
+        method: 'GET',
+        // describes to the backend the type of incoming content
+        headers: { 'Content-Type': 'application/json' },
+        mode: 'cors'
+    };
+
+    const response = await fetch(endpoint, requestOptions);
 
     if (!response.ok) {
         throw new Error('Something crashed: ' + response.statusText);
@@ -48,7 +55,14 @@ export const getAssignedQuiz = async () => {
 export const getQuiz = async (id) => {
     let endpoint = mainAddress + '/' + id;
 
-    const response = await fetch(endpoint);
+    const requestOptions = {
+        method: 'GET',
+        // describes to the backend the type of incoming content
+        headers: { 'Content-Type': 'application/json' },
+        mode: 'cors'
+    };
+
+    const response = await fetch(endpoint, requestOption);
 
     if (!response.ok) {
         throw new Error('Something crashed: ' + response.statusText);
@@ -72,7 +86,14 @@ export const getQuiz = async (id) => {
 export const launchQuiz = async (quizId) => {
     let endpoint = mainAddress + '/start/' + quizId + '?userId=' + localStorage.getItem('userId');
 
-    const response = await fetch(endpoint);
+    const requestOptions = {
+        method: 'PUT',
+        // describes to the backend the type of incoming content
+        headers: { 'Content-Type': 'application/json' },
+        mode: 'cors'
+    };
+
+    const response = await fetch(endpoint, requestOptions);
 
     if (!response.ok) {
         throw new Error('Something crashed: ' + response.statusText);
@@ -120,7 +141,14 @@ export const endQuiz = async (quizData) => {
 export const getQuizStatus = async () => {
     let endpoint = mainAddress + "/status/" + localStorage.getItem("courseId");
 
-    const response = await fetch(endpoint);
+    const requestOptions = {
+        method: 'GET',
+        // describes to the backend the type of incoming content
+        headers: { 'Content-Type': 'application/json' },
+        mode: 'cors'
+    };
+
+    const response = await fetch(endpoint, requestOptions);
 
     if (!response.ok) {
         throw new Error('Something crashed: ' + response.statusText);
@@ -147,9 +175,15 @@ export const getQuizStatus = async () => {
 export const getQuizBank = async (courseId) => {
     let endpoint = mainAddress + "/course/" + courseId;
 
+    const requestOptions = {
+        method: 'GET',
+        // describes to the backend the type of incoming content
+        headers: { 'Content-Type': 'application/json' },
+        mode: 'cors'
+    };
     
     // get data from endpoint (note: fetch(url) defaults to GET)
-    const response = await fetch(endpoint);
+    const response = await fetch(endpoint, requestOptions);
 
     if (!response.ok) {
         throw new Error('Something crashed: ' + response.statusText);

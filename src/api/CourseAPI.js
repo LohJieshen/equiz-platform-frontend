@@ -5,7 +5,14 @@ const CourseAPI = () => {
     const getCourseList = async () => {
         let endpoint = mainAddress + "/course-list";
 
-        const response = await fetch(endpoint);
+        const requestOptions = {
+            method: 'GET',
+            // describes to the backend the type of incoming content
+            headers: { 'Content-Type': 'application/json' },
+            mode: 'cors'
+        };
+
+        const response = await fetch(endpoint, requestOptions);
 
         if (!response.ok) {
             throw new Error('Something crashed: ' + response.statusText);
