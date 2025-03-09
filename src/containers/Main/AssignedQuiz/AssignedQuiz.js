@@ -31,7 +31,6 @@ const AssignedQuiz = () => {
     const navigate = useNavigate();
 
     const clickHandler = (quizId, action) => (event) => {
-    const clickHandler = (quizId, action) => (event) => {
         event.preventDefault();
         if (action !== "NO ACTION POSSIBLE") {
             
@@ -63,7 +62,6 @@ const AssignedQuiz = () => {
         if (params.field === 'action') {
             return (
                 <Button
-                    onClick={clickHandler(params.row.quizId, params.row.action)}
                     onClick={clickHandler(params.row.quizId, params.row.action)}
                     variant='contained'
                 >
