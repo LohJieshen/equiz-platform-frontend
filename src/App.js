@@ -3,6 +3,8 @@ import Main from './containers/Main/Main.js'
 import React, {useState, useEffect}  from 'react';
 import { useOutletContext, BrowserRouter as Router  } from "react-router-dom";
 import './App.css';
+import { updateUserLastLogin } from './api/UserAPI.js';
+
 //import ReactDOM from 'react-dom/client';
 
 function App() {
@@ -21,6 +23,8 @@ function App() {
     localStorage.setItem('isLoggedIn', '1');
     localStorage.setItem('userId', userId);
     setIsLoggedIn(true);
+    
+    console.log(updateUserLastLogin(userId).message);
   };
 
   const logoutHandler = () => {
