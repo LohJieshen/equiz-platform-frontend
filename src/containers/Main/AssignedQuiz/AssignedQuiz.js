@@ -32,7 +32,7 @@ const AssignedQuiz = () => {
 
     const clickHandler = (quizId, action) => (event) => {
         event.preventDefault();
-        if (action !== "No action possible") {
+        if (action !== "NO ACTION POSSIBLE") {
             
             setQuizId(quizId);
             navigate(`/current-quiz`);
