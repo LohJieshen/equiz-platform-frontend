@@ -30,10 +30,13 @@ const AssignedQuiz = () => {
 
     const navigate = useNavigate();
 
-    const clickHandler = (quizId) => (event) => {
+    const clickHandler = (quizId, action) => (event) => {
         event.preventDefault();
-        setQuizId(quizId);
-        navigate(`/current-quiz`);
+        if (action !== "No action possible") {
+            
+            setQuizId(quizId);
+            navigate(`/current-quiz`);
+        }
     }
 
     const fetchData = useCallback(async() => {
@@ -59,7 +62,7 @@ const AssignedQuiz = () => {
         if (params.field === 'action') {
             return (
                 <Button
-                    onClick={clickHandler(params.row.quizId)}
+                    onClick={clickHandler(params.row.quizId, params.row.action)}
                     variant='contained'
                 >
                     {params.row.action}
