@@ -115,3 +115,28 @@ export const hasLecturerAccess = async () => {
         return { ok: false, error: error.message }; // Return a response-like object indicating failure
     }
 }
+
+export const updateUserLastLogin = async (userId) => {
+    let endpoint = mainAddress + "/update-last-login/" + userId;
+
+
+    const requestOptions = {
+        method: 'PUT',
+        heads: { 'Content-Type': 'application/json' },
+        mode: 'cors',
+    };
+
+    try {
+        const response = await fetch(endpoint, requestOptions);
+        if (!response.ok) {
+            throw new Error('Something went wrong.');
+        }
+        const data = await response.json();
+        console.log(data);
+        return data.message;
+
+    } catch (error) {
+        console.error('Failed to fetch:', error);
+        return { ok: false, error: error.message };
+    }
+}
