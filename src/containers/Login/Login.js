@@ -99,9 +99,8 @@ const Login = (props) => {
               id="password"
               autoComplete="current-password"
             />
-            <Link href="#" variant="body2">
-                Forgot password?
-            </Link>
+            <Container>Demo Login details (Lecturer role): 230001 / tenaciousD</Container>
+            <Container>Demo Login details (Student role): 230005 / racerx</Container>
             <Button
               type="submit"
               fullWidth
