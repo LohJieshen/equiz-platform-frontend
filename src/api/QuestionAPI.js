@@ -78,16 +78,27 @@ export const getQuestion = async (id) => {
         };
 }
 
-export const addNewQuestion = async (id) => {
-    let endpoint = mainAddress + "/add/" + id;
+// API for creating new question to add to question bank
+export const createNewQuestion = async (questionBody, topicId, ansId, choice1, choice2, choice3, choice4) => {
+    let endpoint = mainAddress + "/create";
 
-    console.log(id);
-    // 
+    console.log("Creating new question...");
+    
+    const requestBody = {
+        'questionBody': questionBody,
+        'topicId': topicId,
+        'answerId': ansId,
+        'choice1': choice1,
+        'choice2': choice2,
+        'choice3': choice3,
+        'choice4': choice4
+    };
+
     const requestOptions = {
         method: 'POST',
         // describes to the backend the type of incoming content
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(id), // turns data into JSON format
+        body: JSON.stringify(requestBody), // turns data into JSON format
         mode: 'cors'
     };
 
