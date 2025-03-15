@@ -42,6 +42,26 @@ const QuizCreation = () => {
         event.preventDefault();
     }
 
+    const fetchData = useCallback(async() => {
+
+        try {
+            // TODO - Filter by topic
+            const questionData = await getQuestionBank();
+            setData(questionData);
+            console.log("successfully receive question bank.");
+            console.log(questionData);
+        }
+        catch (error) {
+            console.error("Error fetching question bank: ", error);
+        }
+    }, []);
+
+    // fetches data when the component mounts
+    useEffect(() => {
+        fetchData();
+    }, [fetchData]);
+
+    // TODO - If Course and Title not selected, blank the contents
     return (
         <div className='quiz_creation'>
             <Title title={title}></Title>
