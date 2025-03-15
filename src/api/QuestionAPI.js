@@ -130,10 +130,6 @@ export const updateQuestion = async (id) => {
 }
 
 
-export const getCurrQuestion = async (userId, quizId) => {
-    let endpoint = mainAddress + "/answer" + id + "/delete";
-}
-
 // PUT request to update selected choice
 export const updateCurrQuestionSelectedChoice = async (userId, quizId, questionNo, choice) => {
     let endpoint = mainAddress + "/answer?userId=" + userId + "&quizId=" + quizId + "&questionNo=" + questionNo + "&choice=" + choice;
@@ -148,14 +144,6 @@ export const updateCurrQuestionSelectedChoice = async (userId, quizId, questionN
     const response = await fetch(endpoint, requestOptions);
     const data = await response.json();
     console.log(data);
-}
-
-export const getPrevQuestion = async (userId, quizId, currQuestionNo) => {
-    let endpoint = mainAddress + "/" + id + "/delete";
-}
-
-export const getNextQuestion = async (userId, quizId, currQuestionNo) => {
-    let endpoint = mainAddress + "/" + id + "/delete";
 }
 
 export const flagQuestionForDeletion = async (id) => {
