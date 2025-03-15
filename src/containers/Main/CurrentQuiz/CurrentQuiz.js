@@ -107,7 +107,7 @@ const CurrentQuiz = () => {
         try {
             const questionData = await getQuestion(currQuestionNo); 
             setQuestion(questionData);
-            console.log("successfully receive question bank.");
+            console.log("successfully receive current question.");
             console.log(questionData);
         }
         catch (error) {

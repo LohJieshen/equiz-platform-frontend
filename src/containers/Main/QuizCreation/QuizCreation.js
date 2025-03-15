@@ -2,9 +2,10 @@ import './QuizCreation.css';
 import Title from '../../../components/Title/Title.js';
 import Card from '../../../components/UI/Card/Card.js';
 import {addQuiz} from '../../../api/QuizAPI.js';
+import {getQuestionBank} from '../../../api/QuestionAPI.js'
 import DataTable from '../../../components/UI/DataDisplay/DataTable.js';
 import Button from '@mui/material/Button';
-import React, {useState} from 'react';
+import React, {useEffect, useState, useCallback} from 'react';
 import {Link} from 'react-router-dom';
 
 const QuizCreation = () => {
@@ -14,12 +15,14 @@ const QuizCreation = () => {
     const [maxAttempts, setMaxAttempts] = useState('1');
     const [dueDate, setDueDate] = useState('');
     const [selectedQuestions, setSelectedQuestions] = useState([]);
+    const [data, setData] = useState([]);
 
     const columns = [
-        {field: "question_id", headerName: "ID", width: 64},
-        {field: "topic_name", headerName: "Topic Name", width: 128},
-        {field: "question_body", headerName: "Question Text Preview", width: 512},
-        {field: "correct_answer", headerName: "Correct Answer", width: 256}        
+        {field: "questionId", headerName: "ID", maxWidth: 64},
+        {field: "courseName", headerName: "Course Name", width: 128},
+        {field: "topicName", headerName: "Topic Name", width: 128},
+        {field: "questionBody", headerName: "Question Text Preview", width: 640},
+        {field: "viewEdit", headerName: "View/Edit", width: 128} 
     ];
 
     const confirmDiscardHandler = (event) => {
@@ -61,6 +64,20 @@ const QuizCreation = () => {
         fetchData();
     }, [fetchData]);
 
+    const renderCell = (params) => {
+        if (params.field === 'viewEdit') {
+            return (
+                <Button
+                    onClick={() => navigate(`/view-edit-question/${params.row.questionId}`)}
+                    variant='contained'
+                >
+                    View/Edit
+                </Button>
+            );
+        }
+        return params.value;
+    }
+
     // TODO - If Course and Title not selected, blank the contents
     return (
         <div className='quiz_creation'>
@@ -86,6 +103,9 @@ const QuizCreation = () => {
                         </div>
                     </div>
                     <DataTable columns={columns}
+                                rows={data}
+                                rowKey="questionId"
+                                renderCell={renderCell}
                     onSelectionModelChange={setSelectedQuestions}/>
                     <div className='quiz_creation_options'>
                         {/* TODO - "Discard" and "Create Quiz" options */}
