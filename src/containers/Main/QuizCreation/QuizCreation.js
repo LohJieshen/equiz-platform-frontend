@@ -35,7 +35,7 @@ const QuizCreation = () => {
     }
 
     const dueDateChangeHandler = (event) => {
-        setChangedTitle(event.target.value);
+        setDueDate(event.target.value);
     }
 
     const submitHandler = (event) => {
