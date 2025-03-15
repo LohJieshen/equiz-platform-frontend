@@ -7,7 +7,7 @@ import './MainMenu.css'
 
 const MainMenu = () => {
 
-    const [isLecturer, setIsLecturer] = useState(false); // State to manage lecturer access
+    const [isLecturer, setIsLecturer] = useState(null); // State to manage lecturer access
 
     const checkLecturerAccess = useCallback(async () => {
         try {
