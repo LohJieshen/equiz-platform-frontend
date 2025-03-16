@@ -7,6 +7,7 @@ import DataTable from '../../../components/UI/DataDisplay/DataTable.js';
 import Button from '@mui/material/Button';
 import React, {useEffect, useState, useCallback} from 'react';
 import {Link} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const QuizCreation = () => {
     const title = "Create Quiz";
@@ -16,7 +17,8 @@ const QuizCreation = () => {
     const [dueDate, setDueDate] = useState('');
     const [selectedQuestions, setSelectedQuestions] = useState([]);
     const [data, setData] = useState([]);
-
+    const navigate = useNavigate();
+                                    
     const columns = [
         {field: "questionId", headerName: "ID", maxWidth: 64},
         {field: "courseName", headerName: "Course Name", width: 128},
