@@ -1,31 +1,14 @@
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import {Link} from 'react-router-dom';
-import React, {useEffect, useState, useCallback} from 'react';
-import {hasLecturerAccess} from '../../../api/UserAPI.js'
+import React from 'react';
+import CircularProgress from '@mui/material/CircularProgress';
 import './MainMenu.css'
 
-const MainMenu = () => {
+const MainMenu = (props) => {
 
-    const [isLecturer, setIsLecturer] = useState(null); // State to manage lecturer access
-
-    const checkLecturerAccess = useCallback(async () => {
-        try {
-            const userId = localStorage.getItem('userId'); // Assuming userId is stored in localStorage
-            const access = await hasLecturerAccess(userId);
-            setIsLecturer(access);
-            console.log("lecturer access: " + access);
-        } catch (error) {
-            console.error("Error checking lecturer access: ", error);
-        }
-    }, []);
-
-    useEffect(() => {
-        checkLecturerAccess();
-    }, [checkLecturerAccess]);
-
-    if (isLecturer === null) {
-        return <div>Loading...</div>; // Show a loading state while checking access
+    if (props.isLecturer === null) {
+        return <div><CircularProgress /><br/>Loading<br/></div>; // Show a loading state while checking access
     }
 
     return (
@@ -39,7 +22,7 @@ const MainMenu = () => {
 
             {/* Lecturer-Access functions */}
 
-            { isLecturer ? (<React.Fragment>
+            { props.isLecturer ? (<React.Fragment>
             <Button component={Link} to="/create-quiz" variant="contained" size="large">
                 Create Quiz
             </Button>
