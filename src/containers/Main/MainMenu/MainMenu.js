@@ -7,7 +7,7 @@ import './MainMenu.css'
 
 const MainMenu = (props) => {
 
-    if (props.isLecturer() === null) {
+    if (props.isLecturer === null) {
         return <div><CircularProgress /><br/>Loading<br/></div>; // Show a loading state while checking access
     }
 
@@ -22,7 +22,7 @@ const MainMenu = (props) => {
 
             {/* Lecturer-Access functions */}
 
-            { props.isLecturer() ? (<React.Fragment>
+            { props.isLecturer ? (<React.Fragment>
             <Button component={Link} to="/create-quiz" variant="contained" size="large">
                 Create Quiz
             </Button>
